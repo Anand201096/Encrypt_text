@@ -18,85 +18,79 @@ lang='You are doing safe encryption.'
 print(colored(lang,'green'))
 print("======================================================")
 
-# encrypt and decrypt a text using a simple algorithm of offsetting the letters
+ann = str(input(colored("Enter the method (Encrypt / Decrypt): ", 'red')))
 
 key = 'abcdefghijklmnopqrstuvwxyz'
 
+if "encrypt" in ann:
 
+    def encrypt(n, plaintext):
 
-def encrypt(n, plaintext):
+        """Encrypt the string and return the ciphertext"""
 
-    """Encrypt the string and return the ciphertext"""
-
-    result = ''
-
-
-
-    for l in plaintext.lower():
-
-        try:
-
-            i = (key.index(l) + n) % 26
-
-            result += key[i]
-
-        except ValueError:
-
-            result += l
+        result = ''
 
 
 
-    return result.lower()
+        for l in plaintext.lower():
+
+            try:
+
+                i = (key.index(l) + n) % 26
+
+                result += key[i]
+
+            except ValueError:
+
+                result += l
 
 
 
-def decrypt(n, ciphertext):
+        return result.lower()
+    offset = 5   
+    text = str(input(colored('[*]  Enter a text or sentence:--> ','red')))   
+    encrypted = encrypt(offset, text)
+    out= colored('[+] your encrypted text is here:--> ', 'green')
+    print(colored(out,'green'),encrypted)
+    
 
-    """Decrypt the string and return the plaintext"""
+elif "decrypt" in ann:
+    def decrypt(n, ciphertext):
 
-    result = ''
+        """Decrypt the string and return the plaintext"""
 
-
-
-    for l in ciphertext:
-
-        try:
-
-            i = (key.index(l) - n) % 26
-
-            result += key[i]
-
-        except ValueError:
-
-            result += l
+        result = ''
 
 
 
-    return result
+        for l in ciphertext:
 
-time.sleep(1)
+            try:
 
-text = str(input(colored('[*]  Enter a text or sentence to encrypt:--> ','red')))
+                i = (key.index(l) - n) % 26
 
-offset = 5
-time.sleep(1)
-print("Loading:")
+                result += key[i]
 
-#animation = ["10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%"]
-animation = ["[■□□□□□□□□□]", "[■■□□□□□□□□]", "[■■■□□□□□□□]", "[■■■■□□□□□□]", "[■■■■■□□□□□]", "[■■■■■■□□□□]", "[■■■■■■■□□□]", "[■■■■■■■■□□]", "[■■■■■■■■■□]", "[■■■■■■■■■■]"]
+            except ValueError:
 
-for i in range(len(animation)):
-    time.sleep(0.3)
-    sys.stdout.write("\r" + animation[i % len(animation)])
-    sys.stdout.flush()
-
-print("\n")
+                result += l
 
 
-encrypted = encrypt(offset, text)
 
-out='[+] your encrypted text is here:--> '
-print(colored(out,'green'),encrypted)
+        return result
+    offset = 5
+    text = str(input(colored('[*]  Enter a text or sentence:--> ','red')))
+    decrypted = decrypt(offset, text)
+    out= colored('[+] your decrypted text is here:--> ', 'green')
+    print(colored(out,'green'),decrypted)
+    
+
+else:
+    pass
+
+
+
+
 
 time.sleep(1)
 
