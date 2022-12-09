@@ -29,24 +29,14 @@ if "encrypt" in ann:
         """Encrypt the string and return the ciphertext"""
 
         result = ''
-
-
-
         for l in plaintext.lower():
-
             try:
-
                 i = (key.index(l) + n) % 26
-
                 result += key[i]
-
             except ValueError:
-
                 result += l
-
-
-
         return result.lower()
+    
     offset = 5   
     text = str(input(colored('[*]  Enter a text or sentence:--> ','red')))   
     encrypted = encrypt(offset, text)
@@ -60,24 +50,14 @@ elif "decrypt" in ann:
         """Decrypt the string and return the plaintext"""
 
         result = ''
-
-
-
         for l in ciphertext:
-
             try:
-
                 i = (key.index(l) - n) % 26
-
                 result += key[i]
-
             except ValueError:
-
                 result += l
-
-
-
         return result
+
     offset = 5
     text = str(input(colored('[*]  Enter a text or sentence:--> ','red')))
     decrypted = decrypt(offset, text)
@@ -86,17 +66,12 @@ elif "decrypt" in ann:
     
 
 else:
-    pass
-
-
-
+    print(colored("\n[!] Please check and select proper method.....",'green'))
 
 
 time.sleep(1)
-
 output = render('Thankyou!', colors=['yellow', 'red'], align='center')
 print(output)
-
 
 
 def restart_program():
