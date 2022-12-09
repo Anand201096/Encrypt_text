@@ -1,6 +1,6 @@
 # Encrypt_text
 
-- Very basic example of encryption using python.
+- Very basic example of encryption and decryption is done using python.
 
 ## Requirements
 - python3 ( 3.5 or above version )
